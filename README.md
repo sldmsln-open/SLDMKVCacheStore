@@ -246,42 +246,8 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 ## SLDMKVCacheStore Architecture Diagram
 
 ```
-                              +-------------------+
-                              |                   |
-                              |   Clients(vLLM)   |
-                              |                   |
-                              +--------+----------+
-                                       |
-                                       | gRPC Requests (Put/Get)
-                                       v
-+----------------------------------------------------------------------+
-|                           gRPC Service Layer                         |
-|                                                                      |
-|  +----------------+    +----------------+    +----------------+      |
-|  | Put Operation  |    | Get Operation  |    | Other Methods  |      |
-|  +-------+--------+    +-------+--------+    +----------------+      |
-+----------------------------------------------------------------------+
-         |                       ^
-         | Write                 | Read
-         v                       |
-+----------------------------------------------------------------------+
-|                         NuRaft Consensus Layer                       |
-|                                                                      |
-|    +----------------+    +---------------+    +----------------+     |
-|    |                |    |               |    |                |     |
-|    |   Leader Node  |<-->|  Follower 1   |<-->|  Follower 2    |     |
-|    |                |    |               |    |                |     |
-|    +-------+--------+    +-------+-------+    +-------+--------+     |
-+----------------------------------------------------------------------+
-         |                       |                       |
-         | Commit                | Replicate             | Replicate
-         v                       v                       v
-+----------------+      +----------------+      +----------------+
-|                |      |                |      |                |
-|   RocksDB 1    |      |   RocksDB 2    |      |   RocksDB 3    |
-| (Leader Store) |      |(Follower Store)|      |(Follower Store)|
-|                |      |                |      |                |
-+----------------+      +----------------+      +----------------+
+![image](https://github.com/user-attachments/assets/3f12b9bb-1144-45ae-8284-90eb83a7d22e)
+
 ```
 
 ## Data Flow Description
