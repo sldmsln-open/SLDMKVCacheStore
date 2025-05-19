@@ -1,0 +1,10 @@
+#pragma once
+
+namespace sldmkvcachestore {
+    constexpr const char* VERSION = "@sldmkvcachestore_VERSION@";
+    constexpr const char* VERSION_MAJOR = "@sldmkvcachestore_VERSION_MAJOR@";
+    constexpr const char* VERSION_MINOR = "@sldmkvcachestore_VERSION_MINOR@";
+    constexpr const char* VERSION_PATCH = "@sldmkvcachestore_VERSION_PATCH@";
+    constexpr const char* GIT_COMMIT = "@GIT_COMMIT@";
+    constexpr const char* BUILD_TYPE = "@CMAKE_BUILD_TYPE@";
+} 
