@@ -101,8 +101,8 @@ sudo make install
   --listen 0.0.0.0:50051 \
   --use-raft \
   --raft-endpoint localhost:50052 \
-  --peer 2,localhost:50062 \
-  --peer 3,localhost:50072
+  --peer 2,node2:50062 \
+  --peer 3,node3:50072
 
 # Start Node 2 (in another terminal)
 ./examples/simple_server \
@@ -111,8 +111,8 @@ sudo make install
   --listen 0.0.0.0:50061 \
   --use-raft \
   --raft-endpoint localhost:50062 \
-  --peer 1,localhost:50052 \
-  --peer 3,localhost:50072
+  --peer 1,node1:50052 \
+  --peer 3,node3:50072
 
 # Start Node 3 (in another terminal)
 ./examples/simple_server \
@@ -121,8 +121,8 @@ sudo make install
   --listen 0.0.0.0:50071 \
   --use-raft \
   --raft-endpoint localhost:50072 \
-  --peer 1,localhost:50052 \
-  --peer 2,localhost:50062
+  --peer 1,node1:50052 \
+  --peer 2,node2:50062
 ```
 
 ## Testing with the Client
